@@ -1,8 +1,19 @@
 var express = require('express');
 var cors = require('cors');
+const multer = require('multer');
+const {GridFsStorage} = require('multer-gridfs-storage');
+const mongoose = require('mongoose');
 require('dotenv').config()
-
 var app = express();
+
+mongoose
+  .connect(process.env.DBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Mongodb connected");
+  });
 
 app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
