@@ -27,8 +27,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/api/fileanalyse', upload.single('upfile'), function(req, res) { 
-  // name, type and size in bytes
-  res.json({ name: req.file.originalname, type: req.file.mimetype, size: req.file.size }); //chunks might pose problem for the size in bytes
+  res.json({ name: req.file.originalname, type: req.file.mimetype, size: req.file.size }); 
 });
 
 
